@@ -1,0 +1,76 @@
+﻿@page "/"
+@page "/StayFlexy"
+
+<PageTitle>Stay Flexy</PageTitle>
+
+<div id="flexboxDemo">
+    <div class="section elementsContainer">
+        <h3>Parent Element</h3>
+        <div class="flexboxParent" style=" @parentStyling">
+            @for (int child = 1; child <= childrenStyling.Count; child++)
+            {
+                int temp = child;
+                <div class="flexboxChild d-flex align-items-center" id="@temp" style="@childrenStyling[temp]">
+                    <p>child element @temp</p>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="section userInputs">
+        <div class="addRemoveBtns">            
+            <button class="btn btn-success" @onclick="addChildElement">Add New Child</button>
+            <button class="btn btn-danger" @onclick="removeChildElement">Remove Child</button>
+        </div>
+        <ParentController SideBarFocus="(val) => { inforbarFocus = val; infobar.show(); StateHasChanged();}" @bind-Styling="@parentStyling"></ParentController>
+        <div id="childrenControllers">
+            @for (int i = 1; i <= childrenStyling.Count; i++)
+            {
+                int temp = i;
+                <ChildController @key="temp" SideBarFocus="(val) => { inforbarFocus = val; infobar.show(); StateHasChanged();}" StylingChanged="(val) => {updateChildStyling(val);}" Styling="@childrenStyling[temp]" ID="temp"></ChildController>
+            }
+        </div>
+        <div class="addRemoveBtns">
+            <button class="btn btn-success" @onclick="addChildElement">Add New Child</button>
+            <button class="btn btn-danger" @onclick="removeChildElement">Remove Child</button>
+        </div>
+    </div>
+</div>
+<InformationalBar @ref="infobar" focus="@inforbarFocus"></InformationalBar>
+
+@code {
+    private bool displayInfobar;
+    private string parentStyling = "";
+    private Dictionary<int, string> childrenStyling = new Dictionary<int, string>
+    {
+        { 1, "height:80px;" }
+    };
+    
+
+    private string inforbarFocus = "";
+    private InformationalBar infobar = new InformationalBar();
+
+    private void addChildElement()
+    {
+        childrenStyling.Add(childrenStyling.Count + 1, "height:80px;");
+    }
+
+    private void removeChildElement()
+    {
+        int lastElementKey = childrenStyling.Count;
+        childrenStyling.Remove(lastElementKey);
+    }
+
+    private void updateChildStyling(int id, string newStyling)
+    {
+        childrenStyling[id] = newStyling;
+        Console.WriteLine(childrenStyling.ToString());
+    }
+
+    private void updateChildStyling(KeyValuePair<int, string> newStyle)
+    {
+        childrenStyling.Remove(newStyle.Key);
+        childrenStyling.Add(newStyle.Key, newStyle.Value);
+        //childrenStyling[id] = newStyling;
+        Console.WriteLine(childrenStyling.ToString());
+    }
+}

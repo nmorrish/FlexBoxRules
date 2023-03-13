@@ -1,0 +1,71 @@
+﻿small {
+    margin: .5em;
+}
+
+#flexboxDemo {
+    display: flex;
+    flex-direction: row;
+    height: 100vh; 
+    justify-content: stretch;
+}
+
+.elementsContainer {
+    background-color: #014a52;
+    color: #7deefa;
+    font-weight: bold;
+    overflow-y: auto;
+}
+
+.flexboxParent {
+    display: flex;
+}
+
+.flexboxChild {
+    border: 1px solid black;
+    margin: 1em;
+    padding: .5em 1em;
+    border-radius: 5px;
+    background-color: #9c2f00;
+    color: #f5b28e;
+}
+
+.flexboxChild p {
+    margin: 0;
+}
+
+.section {
+    /*align-self: stretch;
+    width: 50vh;*/
+    flex-basis: 50%;
+    margin: 1em;
+}
+
+.userInputs {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.addRemoveBtns {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1em 0;
+}
+
+.addRemoveBtns button {
+    border-radius: 5px;
+    padding: .5em 1em;
+}
+
+.addBtn {
+    background-color: lightgreen;
+}
+
+.removeBtn {
+    background-color: lightcoral;
+    color: white;
+}
+
+#childrenControllers {
+    /*overflow-y: auto;*/
+}

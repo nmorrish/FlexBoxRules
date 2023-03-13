@@ -1,0 +1,247 @@
+﻿<div class="childController">
+    <div class="controlItem">
+        <h5><b>Child Element @ID</b></h5>
+        <hr />
+        <div style="display: flex; flex-wrap: wrap;">
+            <form>
+                <div class="form-group">
+                    <label for="order-@ID" class="d-flex">
+                        <b>order</b>
+                        <input style="margin-left:20px" type="number" id="order-@ID" name="order-@ID" @onchange='e => updateStyling("order", e.Value.ToString())'>
+                    </label>
+                </div>
+                <hr />
+                <div class="form-group">
+                    <h6>
+                        <b>align-self</b>
+                        @*<svg @onclick='() => showInfo("child-align-self")' xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                        </svg>*@
+                    </h6>
+
+                    <label for="auto-align-self-@ID">
+                        <input type="radio" id="auto-align-self-@ID" name="align-self-@ID" @onclick='() => {updateStyling("align-self", "auto"); }'> auto
+                    </label>
+
+                    <label for="flex-start-align-self-@ID">
+                        <input type="radio" id="flex-start-align-self-@ID" name="align-self-@ID" @onclick='() => updateStyling("align-self", "flex-start")'> flex-start
+                    </label>
+
+                    <label for="flex-end-align-self-@ID">
+                        <input type="radio" id="flex-end-align-self-@ID" name="align-self-@ID" @onclick='() => updateStyling("align-self", "flex-end")'> flex-end
+                    </label>
+
+                    <label for="center-align-self-@ID">
+                        <input type="radio" id="center-align-self-@ID" name="align-self-@ID" @onclick='() => updateStyling("align-self", "center")'> center
+                    </label>
+
+                    <label for="baseline-align-self-@ID">
+                        <input type="radio" id="baseline-align-self-@ID" name="align-self-@ID" @onclick='() => updateStyling("align-self", "baseline")'> baseline
+                    </label>
+
+                    <label for="stretch-align-self-@ID">
+                        <input type="radio" id="stretch-align-self-@ID" name="align-self-@ID" @onclick='() => updateStyling("align-self", "stretch")'> stretch
+                    </label>
+                    <br />
+                    <label for="child-height-@ID">
+                        Height:
+                        <input type="number" id="child-height-@ID" name="child-height-@ID" @bind="childHeight" /> px (align-self only works when no height is specified)
+                    </label>
+                    <aside style="margin-top:20px;">Click the above options twice. If I had more time I could fix my debugger, but that is not the case</aside>
+                </div>
+                <hr />
+                <div class="form-group pt-3">
+
+                    <div class="d-inline-flex">
+                        <label for="flex-grow-@ID" class="d-flex justify-content-start" style="width:150px; padding-right:8px;">
+                            flex-grow
+                            <input type="number" id="flex-grow-@ID" name="flex-grow-@ID" @bind="flexGrow" style="margin-left:10px; width:55px;">
+                        </label>
+
+                        <label for="flex-shrink-@ID" class="d-flex justify-content-start" style="width:150px; padding-right:8px;">
+                            flex-shrink
+                            <input type="number" id="flex-shrink-@ID" name="flex-shrink-@ID" @bind="flexShrink" style="margin-left:10px; width:55px;">
+                        </label>
+
+                        <label for="flex-basis-@ID" class="d-flex justify-content-start" style="width:236px; padding-right:8px;">
+                            flex-basis
+                            <input style="margin-left:10px; width:55px;" class="@basisInputDisplay" type="number" @bind="basisValue" id="flex-basis-@ID" name="flex-basis-@ID">
+                            <select style="@basisSelectDisplay" name="basisType" @onchange='e => updateBasisInput(basisValue, e.Value.ToString())'>
+                                <option value="px" selected>px</option>
+                                <option value="rem">rem</option>
+                                <option value="em">em</option>
+                                <option value="%">%</option>
+                                <option value="initial">initial</option>
+                                <option value="auto">auto</option>
+                                <option value="none">none</option>
+                            </select>
+                        </label>
+
+                    </div>
+                    @*<br />
+                    <div class="d-inline-flex">
+                    <span style="margin-left:110px;">&#9939;</span>
+                    <span style="margin-left:133px;">&#9939;</span>
+                    <span style="margin-left:135px;">&#9939;</span>
+                    </div>
+                    <br />
+                    <div class="d-inline-flex">
+                    <label for="flex-grow-@ID" class="d-flex justify-content-between" style="width:150px; padding-right:8px;">
+                    <b>flex</b>
+                    <input type="number" id="flex-param1-@ID" name="flex-param1-@ID" @bind="flexGrow" style="margin-left:66px">
+                    <input type="number" id="flex-param2-@ID" name="flex-param1-@ID" @bind="flexShrink" style="margin-left:102px">
+                    <input type="number" class="@basisInputDisplay" id="flex-param3-@ID" name="flex-param1-@ID" @bind="basisValue" style="margin-left:102px">
+                    <label style="margin-left:20px">@basisType</label>
+                    </label>
+                    </div>*@
+                </div>
+                <hr />
+                <div style="margin-left:15px;">
+                    <h5 style="margin-left:-15px;">CSS Preview for child element:</h5>
+                    <code>
+                        <span style="margin-left:-15px;">.Child-Element-@ID {</span>
+                        <br />
+                        @((MarkupString)Styling.Replace(";", ";<br>"))
+                        <span style="margin-left:-15px;">}</span>
+                    </code>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public int ID { get; set; }
+    [Parameter]
+    public string Styling { get; set; }
+    [Parameter]
+    public EventCallback<KeyValuePair<int, string>> StylingChanged { get; set; }
+    [Parameter]
+    public EventCallback<string> SideBarFocus { get; set; }
+
+    private void showInfo(string id)
+    {
+        //inforbarFocus = id;
+        //infobar.show();
+
+        ////displayInfobar = true;
+        //StateHasChanged();
+        SideBarFocus.InvokeAsync(id);
+    }
+
+    #region Flex composite property handlers
+
+    private int? _childHeight = 80;
+    public int? childHeight
+    {
+        get { return _childHeight; }
+        set
+        {
+            updateStyling("height", value.ToString() + "px");
+            _childHeight = value;
+        }
+    }
+
+    private int _flexGrow = 0;
+    public int flexGrow
+    {
+        get { return _flexGrow; }
+        set
+        {
+            updateStyling("flex-grow", value.ToString());
+            _flexGrow = value;
+        }
+    }
+
+    private int _flexShrink = 0;
+    public int flexShrink
+    {
+        get { return _flexShrink; }
+        set
+        {
+            updateStyling("flex-shrink", value.ToString());
+            _flexShrink = value;
+        }
+    }
+
+    public string basisType = "px";
+
+    private int _basisValue = 0;
+    public int basisValue
+    {
+        get { return _basisValue; }
+        set
+        {
+            updateBasisInput(value, basisValue.ToString());
+            _basisValue = value;
+        }
+    }
+    #endregion
+
+    public string basisInputDisplay = "d-block";
+    public string basisSelectDisplay = "";
+
+    private void updateBasisInput(int enteredValue, string selectedBasisType)
+    {
+        if (selectedBasisType == "px" || selectedBasisType == "rem" || selectedBasisType == "em" || selectedBasisType == "%")
+        {
+            basisInputDisplay = "d-block";
+            basisValue = enteredValue;
+            basisType = selectedBasisType;
+            basisSelectDisplay = "";
+            updateStyling("flex-basis", enteredValue + selectedBasisType);
+        }
+        else if (selectedBasisType == "initial" || selectedBasisType == "auto" || selectedBasisType == "none")
+        {
+            basisInputDisplay = "d-none";
+            basisSelectDisplay = "margin-left:20px";
+            basisType = selectedBasisType;
+            updateStyling("flex-basis", selectedBasisType);
+        }
+        else
+        {
+            updateStyling("flex-basis", enteredValue + "px");
+        }
+    }
+
+    private Task updateStyling(string input, string option)
+    {
+        bool addedStyle = false;
+        string[] styles = Styling.Split(";");
+        Styling = "";
+        foreach (string style in styles)
+        {
+
+
+            if (style.Contains(input))
+            {
+                if (input == "height" && option == "px")
+                {
+                    option = "auto";
+                }
+                if (input == "align-self")
+                {
+                    childHeight = null;
+                }
+                Styling += input + ":" + option + ";";
+                addedStyle = true;
+            }
+            else
+            {
+                if (!style.Equals(""))
+                {
+                    Styling += (style == "height:px" ? "height:auto" : style) + ";";
+                }
+            }
+        }
+        if (addedStyle == false)
+        {
+            Styling += input + ":" + option + ";";
+        }
+
+
+        KeyValuePair<int, string> kvp = new KeyValuePair<int, string>(ID, Styling);
+        return StylingChanged.InvokeAsync(kvp);
+    }
+}
